@@ -11,3 +11,14 @@ services:
       - ./backend:/app   # 開発用: 変更がコンテナに反映される
     environment:
       - WATCHFILES_FORCE_POLLING=true
+  
+  frontend:
+    build: ./frontend
+    container_name: lie4ml_frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
