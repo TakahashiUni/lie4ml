@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: lie4ml_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app   # 開発用: 変更がコンテナに反映される
+    environment:
+      - WATCHFILES_FORCE_POLLING=true

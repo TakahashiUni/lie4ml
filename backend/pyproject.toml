@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "lie4ml-backend"
+version = "0.1.0"
+description = "Lie4ML backend (FastAPI)"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
+pydantic = "^2.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
