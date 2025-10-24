@@ -1,10 +1,14 @@
 from pydantic import BaseModel
 
-# 記事の基本情報（レスポンス用）
 class Article(BaseModel):
-    id: int
     title: str
     content: str | None = None
 
+class ArticleCreate(Article):
+    pass
+
+class ArticleCreateResponse(ArticleCreate):
+    id: int
+    
     class Config:
-        orm_mode = True
+        orm_mode = True    
