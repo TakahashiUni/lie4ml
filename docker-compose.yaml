@@ -11,6 +11,8 @@ services:
       - ./backend:/app   # 開発用: 変更がコンテナに反映される
     environment:
       - WATCHFILES_FORCE_POLLING=true
+    depends_on:
+      - db
   
   frontend:
     build: ./frontend
@@ -22,3 +24,20 @@ services:
       - /app/node_modules
     depends_on:
       - backend
+  
+  db:
+    image: mysql:8.0
+    platform: linux/x86_64
+    container_name: lie4ml_db
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: lie4ml
+      TZ: Asia/Tokyo
+    ports:
+      - "33306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:
